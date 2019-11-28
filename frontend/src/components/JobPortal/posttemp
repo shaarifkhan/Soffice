@@ -1,0 +1,135 @@
+import React, { Component } from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import AppBar from 'material-ui/AppBar';
+import './Contact.css';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import { white } from 'material-ui/styles/colors';
+import axios from 'axios';
+class Post extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+      jobTitle:'',
+      jobType:'',
+      jobCategory:'',
+      experience:'',
+      Qualification:'',
+      postedOn:'',
+      lastDate:'',
+      location:'',
+      salary :'',
+      jobDescription:''
+    }
+  }
+  handleClick(){
+    console.log(this.state)
+
+  }
+  register=()=>{
+    console.log(this.state);
+  axios.post('http://192.168.10.11:4000/register',this.state)
+  .then(res=>console.log(res))
+  .catch(err=>console.log(err))
+  }
+  render() {
+    return (
+      
+      <div>
+        
+        <MuiThemeProvider>
+        <AppBar
+             title="Post A New Job"
+           />
+          <div className="container">
+           <br></br>
+           <br></br>
+           <br></br>
+           
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             floatingLabelText="Job Title"
+             onChange = {(event,newValue) => this.setState({jobTitle:newValue})}
+             />
+             <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type="text"
+             floatingLabelText="Job Type"
+             onChange = {(event,newValue) => this.setState({jobType:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             floatingLabelText="Job Category"
+             onChange = {(event,newValue) => this.setState({jobCategory:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = "Experience"
+             floatingLabelText="Experience"
+             onChange = {(event,newValue) => this.setState({experience:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = "Qualification"
+             floatingLabelText="Qualification"
+             onChange = {(event,newValue) => this.setState({Qualification:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = "Ponted on"
+             floatingLabelText="Posted On"
+             onChange = {(event,newValue) => this.setState({postedOn:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = "Last Date"
+             floatingLabelText="Last Date"
+             onChange = {(event,newValue) => this.setState({lastDate:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = " location"
+             floatingLabelText="Location"
+             onChange = {(event,newValue) => this.setState({location:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+             type = "salary"
+             floatingLabelText="Salary"
+             onChange = {(event,newValue) => this.setState({salary:newValue})}
+             />
+           <br/>
+           <TextField floatingLabelStyle={{color: white}}  hintStyle={{color: white}} inputStyle={{color: white}}
+           type = "text"
+                 multiline={true}
+                rows={5}
+                rowsMax={5}
+                floatingLabelText="Enter Job Description Here"
+                onChange = {(event,newValue) => this.setState({jobDescription:newValue})}
+                />
+                <br/>
+           <RaisedButton label="Post Job" primary={true} style={style} onClick={(event) => this.register(event)}/>
+          </div>
+         </MuiThemeProvider>
+      </div>
+    );
+  }
+}
+const style = {
+  margin: 15,
+
+  'input-label': {
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
+    overflow: 'hidden',
+    width: '100%',
+    color: 'red'
+  },
+  
+  'input': {
+    '&::placeholder': {
+      textOverflow: 'ellipsis !important',
+      color: 'blue'
+    }
+  }
+};
+export default Post;
