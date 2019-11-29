@@ -8,24 +8,26 @@ const Navbar =(props)=>{
       <div className="container-left">
 			<Link to ='/' className="navbar-brand" > Soffice </Link>
       </div>
-       <div className="container-left">
-       <Link to ='/JobPortal' className="navbar-brand" > Job Portal </Link>
+      <div className="container-left">
+      <Link to ='/JobPortal' className="navbar-brand" > Job Portal </Link>
+      </div>
+      <div className="container-right">
+      <Link to ='/Signup' className="navbar-brand" > Sign up </Link>
+      </div>
+      <div className="container-right">
+      <Link to ='/Signin' className="navbar-brand" > Sign in </Link>
       </div>
 	    <div className="container"></div>
-	      <div className="collapse navbar-collapse" id="ftco-nav"></div>
-                    <Link to ='/Signup' className="navbar-brand" > Sign up </Link>
-                    <Link to ='/Signin' className="navbar-brand" > Sign in </Link>
-      
-  
-  <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul className="navbar-nav ml-auto">
-      
-    </ul>
+	    <div className="collapse navbar-collapse" id="ftco-nav"></div>
+      <Link to ='/Empdash' className="navbar-brand" > </Link>
+      <Link to ='/Hrdash' className="navbar-brand" > </Link>  
+      <Link to ='/Post' className="navbar-brand" > </Link>
+      <Link to ='/Quali' className="navbar-brand" > </Link>
+      <Link to ='/Atten' className="navbar-brand" > </Link>
+      <Link to ='/Info' className="navbar-brand" > </Link>
+      <Link to ='/Hrdash' className="navbar-brand" > </Link>
 
-  </div>
-</nav>	
-       
-		)
-
+      </nav>	
+    )
 }
 export default Navbar

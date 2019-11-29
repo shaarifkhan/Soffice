@@ -9,7 +9,8 @@ const Navbar=()=>{
 			<Link to ='/Post' className="navbar-brand" > Post Job </Link>
 			<Link to ='/Want' className="navbar-brand" > Want Job </Link>
 			<Link to ='/Contact' className="navbar-brand" > Contact </Link>
-  
+			<Link to ='/Signin' className="navbar-brand" > </Link>
+			
 
   <div className="collapse navbar-collapse" id="navbarSupportedContent">
     <ul className="navbar-nav ml-auto">

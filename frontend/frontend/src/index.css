@@ -5,11 +5,12 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('./bg_2.jpg') no-repeat;
+  background: url('./bg_2.jpg')-webkit-filter=blur(10px) no-repeat;
+  
 
   
 }
-.mat-focused{ color:white!important;},
+.mat-focused{ color:white!important;}
 
 html {
 	font-family: sans-serif;
