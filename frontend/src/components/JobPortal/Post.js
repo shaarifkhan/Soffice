@@ -1,49 +1,50 @@
 import React, { Component } from 'react';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import AppBar from 'material-ui/AppBar';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
+import axios from 'axios';
+import { colors } from 'material-ui/styles';
+import { white } from 'material-ui/styles/colors';
 import './Contact.css';
-import axios from 'axios'
-import {Redirect} from 'react-router-dom'
 class Post extends Component {
-    state={
-      job:{
+  constructor(props){
+    super(props);
+    this.state={
       jobTitle:'',
       jobType:'',
       jobCategory:'',
       experience:'',
       qualification:'',
-      postedOn:'',
       lastDate:'',
       location:'',
-      salary :'',
-      jobDescription:'',
-      postj:true
-      }
+      salary:'',
+      jobDescription:''
     }
-  
-  post=()=>{
-    this.setState(()=>({
-    postj:true
-  }))
   }
+  handleSubmit(event){
+    console.log(this.state)
+  }
+  // handleChange(event){
+  //   value = event.target.value
+  //   this.setState = () => {
+  //     return{
+  //       ...this.state,
+  //       [event.target.name]:event.target.value
+  //     }
+  //   }
+  // }
   render() {
-    const { job } = this.state
-    if(this.state.postj===true)
-    {
-    return(
-      <Redirect to={{pathname:'/Signin',state:{job:this.state.job}}}/>
-      )
-    }
     return (
-    <div className="container-b">
+    <div className="container">
     
       <div className="overlay"></div>
-      <div className="container" >
+      <div className="container-t" >
         <div className="row no-gutters slider-text js-fullheight align-items-end justify-content-start" data-scrollax-parent="true">
           <div className="col-md-8 ftco-animate text-center text-md-left mb-5" data-scrollax=" properties: { translateY: '70%' }">
             <h1 className="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Post a Job</h1>
-            <p className="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hire the most capable individuals with Soffice!</p>
-            <h1 className="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Needs <br></br><span>Fulfills Here</span></h1>
+            <p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Hire the most capable individuals with Soffice!</p>
+            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Needs <br></br><span>Fulfills Here</span></h1>
           </div>
         </div>
       </div>
@@ -62,110 +63,128 @@ class Post extends Component {
        
           <div className="container-center">
           
-			     <form action="#" className="p-5 bg-white">
+			     <form onSubmit={this.handleSubmit.bind(this)} className="p-5 bg-white">
 
            <div className="row form-group">
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Job Title</label>
-                  <input  type="text" id="fullname" className="form-control" placeholder="eg. Engineer, Doctor etc"
-            value={job.jobTitle}
-            onChange={e => this.setState({ job: {...job, jobTitle:e.target.value}})} />
-                </div>
-              </div>
-
-              <div className="row form-group">
-                <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Job Type</label>
-                  <input  type="text" id="fullname" className="form-control" placeholder="eg. Part time, Full Time etc"
-            value={job.jobType}
-            onChange={e => this.setState({ job: {...job, jobType:e.target.value}})} />
-                </div>
-              </div>
-              
-
-              <div className="row form-group">
-                <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Job Category</label>
-                  <input type="text" id="fullname" className="form-control" placeholder="eg. Management,Technical etc"
-            value={job.jobCategory}
-            onChange={e => this.setState({ job: {...job, jobCategory:e.target.value}})} />
+                  <label className="font-weight-bold" for="fullname"><h3>Job Title</h3></label>
+                  <input onChange={(event,value) => this.setState({jobTitle:value})}  type="text" id="fullname" className="form-control" placeholder="eg. Professional UI/UX Designer"/>
                 </div>
               </div>
 
               
+
               <div className="row form-group">
+                <div className="col-md-12"><h3>Job Type</h3></div>
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Experience</label>
-                  <input type="text" id="fullname" className="form-control" placeholder="eg. 5 years,2 years etc"
-            value={job.experience}
-            onChange={e => this.setState({ job: {...job, experience:e.target.value}})} />
+                  <label for="option-job-type-1">
+                    <input onChange={(event,value) => this.setState({jobType:value})} type="radio" id="option-job-type-1" name="jobType"/> Full Time</label>
+                </div>
+
+                
+
+                <div className="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-2">
+                    <input onChange={(event,value) => this.setState({jobType:value})} type="radio" id="option-job-type-2" name="jobType"/> Part Time
+                  </label>
+                </div>
+
+                <div className="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-3">
+                    <input onChange={(event,value) => this.setState({jobType:value})} type="radio" id="option-job-type-3" name="jobType"/> Freelance
+                </label>
+                </div>
+
+                <div className="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-4">
+                    <input onChange={(event,value) => this.setState({jobType:value})} type="radio" id="option-job-type-4" name="jobType"/> Internship
+                  </label>
+                </div>
+
+                <div className="col-md-12 mb-3 mb-md-0">
+                  <label for="option-job-type-4">
+                    <input onChange={(event,value) => this.setState({jobType:value})} type="radio" id="option-job-type-4" name="jobType"/> Termporary
+                  </label>
+                </div>
+                </div>
+                <div className="row form-group mb-5">
+                <div className="col-md-12 mb-3 mb-md-0">
+                  <label className="font-weight-bold" for="fullname"><h3>Job Category</h3></label>
+                  <input onChange={(event,value) => this.setState({jobCategory:value})} name="jobCategory" type="text" id="fullname" className="form-control" placeholder="eg. Computer Science"/>
                 </div>
               </div>
-              
-              <div className="row form-group">
+              <div className="row form-group mb-5">
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Posted On</label>
-                  <input type="date" id="fullname" className="form-control" placeholder="eg. 12/02/2019"
-            value={job.postedOn}
-            onChange={e => this.setState({ job: {...job,postedOn:e.target.value}})} />
+                  <label className="font-weight-bold" for="fullname"><h3>Experience</h3></label>
+                  <input onChange={(event,value) => this.setState({experience:value})} name="experience" type="text" id="fullname" className="form-control" placeholder="eg. 2 years"/>
                 </div>
               </div>
 
-              <div className="row form-group">
+              <div className="row form-group mb-5">
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Last Date</label>
-                  <input type="date" id="fullname" className="form-control" placeholder="eg. 12/02/2019"
-            value={job.lastDate}
-            onChange={e => this.setState({ job: {...job,lastDate:e.target.value}})} />
+                  <label className="font-weight-bold" for="fullname"><h3>Qualification</h3></label>
+                  <input onChange={(event,value) => this.setState({qualification:value})} name="qualification" type="text" id="fullname" className="form-control" placeholder="eg. Graduation"/>
                 </div>
               </div>
-
-              <div className="row form-group">
+              <div className="row form-group mb-5">
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <label className="font-weight-bold" htmlFor="fullname">Qualification</label>
-                  <input type="text" id="fullname" className="form-control" placeholder="eg. Bachelors,Masters etc"
-            value={job.qualification}
-            onChange={e => this.setState({ job: {...job, qualification:e.target.value}})} />
+                  <label className="font-weight-bold" for="fullname"><h3>Last date to apply</h3></label>
+                  <input onChange={(event,value) => this.setState({lastDate:value})} name="lastDate" type="text" id="fullname" className="form-control" placeholder="eg. 10-Dec-2019"/>
                 </div>
               </div>
 
                 <div className="row form-group mb-4">
                 <div className="col-md-12"><h3>Location</h3></div>
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <input type="text" className="form-control" placeholder="Location"
-                  value={job.location}
-            onChange={e => this.setState({ job: {...job, location:e.target.value}})} />
+                  <input onChange={(event,value) => this.setState({location:value})} name="location" type="text" className="form-control" placeholder="Karachi"/>
                 </div>
               </div>
 
-              <div className="row form-group mb-4">
-                <div className="col-md-12"><h3>Salary</h3></div>
+              <div className="row form-group mb-5">
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <input type="text" className="form-control" placeholder="Expected Salary"
-                  value={job.salary}
-            onChange={e => this.setState({ job: {...job, salary:e.target.value}})} />
+                  <label className="font-weight-bold" for="fullname"><h3>Salary</h3></label>
+                  <input onChange={(event,value) => this.setState({salary:value})} name="salary" type="text" id="fullname" className="form-control" placeholder="eg. Computer Science"/>
                 </div>
               </div>
 
-              <div className="row form-group mb-4">
+              <div className="row form-group">
                 <div className="col-md-12"><h3>Job Description</h3></div>
                 <div className="col-md-12 mb-3 mb-md-0">
-                  <input type="text" className="form-control" placeholder="Description"
-                rows={5}
-                rowsmax={5}
-                  value={job.jobDescription}
-            onChange={e => this.setState({ job: {...job, jobDescription:e.target.value}})} />
+                  <textarea onChange={(event,value) => this.setState({jobDescription:value})} name="jobDescription" className="form-control" id="" cols="30" rows="5"></textarea>
                 </div>
               </div>
+
+              <div className="row form-group">
+                <div className="col-md-12">
+                  <input type="submit" value="Post" className="btn btn-primary  py-2 px-5"/>
+                </div>
+              </div>
+
               </form>
               </div>
               </div>
                <br/>
-          <button className="btn btn-primary  py-2 px-5" onClick={this.post.bind(this)}>Post Job</button>
           </div>
           </div>
           </div>
           </div>         
 )}
 };
+const style = {
+    margin: 15,
+    'input-label': {
+     textOverflow: 'ellipsis',
+     whiteSpace: 'nowrap',
+     overflow: 'hidden',
+     width: '100%',
+     color: 'red'
+   },
+   
+   'input': {
+     '&::placeholder': {
+       textOverflow: 'ellipsis !important',
+       color: 'blue'
+     }
+   }
+   };
 export default Post;

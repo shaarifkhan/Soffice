@@ -21,12 +21,16 @@ constructor(props){
  }
 
 login=()=>{
-axios.post('http://192.168.10.11:4000/login',this.state,{withCredentials:true})
+axios.post('http://localhost:4000/login',this.state,{withCredentials:true})
 .then(res=>{
   console.log(res)
+  if(res.status == 200){
+    this.props.history.push('/EmpDash')
+  }
+
 })
 .catch((error)=>{
-  console.log(error.response)
+  // console.log(error.response.status)
 })
 }
 postlogin=()=>{

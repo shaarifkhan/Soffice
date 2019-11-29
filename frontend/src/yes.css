@@ -1,0 +1,40 @@
+ 
+  .menu {
+    display: none;
+  }
+  div.w3-content{
+      max-width:700px;
+    }
+    span.w3-text-white{
+      font-size:90px
+    }
+    body{
+    
+        background-image: URL("bg_2.jpg");
+        background-repeat: no-repeat;
+        background-position: 50% 50%;
+            
+    }
+        
+    
+    
+    div.tatti{
+        
+        color: black;
+        padding: 20%;
+        text-align: center;
+    }
+    div.content{
+        background-image: url("white.jpg");
+        background-position: 50% 90%;
+        padding: -10%;
+        text-align: center;
+    }
+    
+
+        
+
+    p.out{
+        top:20px;
+        font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    }
